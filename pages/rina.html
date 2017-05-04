@@ -26,14 +26,20 @@
             { "Name": "Scala in Depth", "price": 1300 }]
       }
 
+      var text = '{ "employees" : [' +
+'{ "firstName":"John" , "lastName":"Doe" },' +
+'{ "firstName":"Anna" , "lastName":"Smith" },' +
+'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+
+      var obj = JSON.parse(text);
       var i = 0
       document.writeln("<table border = '2'><tr>");
 
-      for (i = 0; i < books.Pascal.length; i++) {
+      for (i = 0; i < obj.employees.length; i++) {
          document.writeln("<td>");
          document.writeln("<table border = '1' width = 100 >");
-         document.writeln("<tr><td><b>Name</b></td><td width = 50>" + books.Pascal[i].Name + "</td></tr>");
-         document.writeln("<tr><td><b>Price</b></td><td width = 50>" + books.Pascal[i].price + "</td></tr>");
+         document.writeln("<tr><td><b>First Name</b></td><td width = 50>" + obj.employees[i].firstName + "</td></tr>");
+         document.writeln("<tr><td><b>Last Name</b></td><td width = 50>" + obj.employees[i].lastName + "</td></tr>");
          document.writeln("</table>");
          document.writeln("</td>");
       }
