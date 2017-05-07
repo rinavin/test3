@@ -4,10 +4,18 @@
          <div class="text left">
             <h1>Rina</h1>
             <h1>Vinokurov</h1>
+             {{rina}}
+             <h1 ng-repeat="x in obj.employees">{{x}}</h1>
              <table id="table1" border="1">
                  <tr>
                      <th>FirstName</th>
                      <th>LastName</th>
+                 </tr>
+             </table>
+             <table>
+                 <tr ng-repeat="x in jsonTbl">
+                     <td>{{ x.firstName }}</td>
+                     <td>{{ x.lastName }}</td>
                  </tr>
              </table>
              <a class="btn" onclick="myFunction()">download the app</a>
@@ -17,7 +25,33 @@
       </div>
    </div>
    <ng-include src="'pages/footer.html'"></ng-include>
-   <script>
+
+    <script>
+        var table = document.getElementById('table1');
+        if (table == null)
+            window.alert("null");
+       
+            var table = document.getElementById('table1');
+            var text = '{ "employees" : [' +
+'{ "firstName":"John" , "lastName":"Doe" },' +
+'{ "firstName":"Anna" , "lastName":"Smith" },' +
+'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+
+            var obj = JSON.parse(text);
+            for (i = 0; i < obj.employees.length; i++) {
+                var row = table.insertRow();
+                var rowData = obj.employees[i];
+                row.insertCell().innerHTML = rowData.firstName;
+                row.insertCell().innerHTML = rowData.lastName;
+            }
+            function myFunction() {
+                alert("Hello! I am an alert box!");
+            }
+
+        
+
+    </script>
+   <!--<script>
 
 
       document.writeln("<h2>JSON array object</h2>");
@@ -68,8 +102,7 @@
           row.insertCell().innerHTML = rowData.firstName;
           row.insertCell().innerHTML = rowData.lastName;
       }
-      function myFunction() {
-         alert("Hello! I am an alert box!");
+      
       }
-   </script>
+   </script>-->
 </div>
