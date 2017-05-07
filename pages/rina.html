@@ -4,7 +4,7 @@
          <div class="text left">
             <h1>Rina</h1>
             <h1>Vinokurov</h1>
-             {{myData}}
+            <!--{{myData}}-->
             
              <table id="table1" border="1">
                  <tr>
@@ -12,13 +12,19 @@
                      <th>LastName</th>
                  </tr>
              </table>
-             <!--<table>
-                 <tr ng-repeat="x in jsonTbl">
-                     <td>{{ x.firstName }}</td>
-                     <td>{{ x.lastName }}</td>
+             <br />
+             <table border="1">
+                 <tr>
+                     <th>FirstName</th>
+                     <th>LastName</th>
+                 </tr>
+                 <tr ng-repeat="x in myData.person">
+                     <td>{{ x.id }}</td>
+                     <td>{{ x.primary.name }}</td>
+                    
                  </tr>
              </table>
-             <br />-->
+           
 
              <!--<table ng-table="usersTable" class="table table-striped">
                  <tr ng-repeat="user in names">
