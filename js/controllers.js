@@ -32,8 +32,20 @@ function AboutCtrl($scope, $http, $timeout) {
 
 function RinaCtrl($scope, $http, $timeout) {
     $scope.rina = 5;
-    //$http.get("customers.php")
-    //.then(function (response) {$scope.names = response.data.records;});
+    //$http.get("data.json")
+    //.then(function (response) {
+    //    $scope.names = response.data.employees;
+    //});
+
+    $http({
+        method: "GET",
+        url: "data.json"
+    }).then(function mySucces(response) {
+        $scope.myData = response.data;
+    }, function myError(response) {
+        $scope.myData = response.statusText;
+    });
+
     var text = '{ "employees" : [' +
 '{ "firstName":"John" , "lastName":"Doe" },' +
 '{ "firstName":"Anna" , "lastName":"Smith" },' +
@@ -41,6 +53,16 @@ function RinaCtrl($scope, $http, $timeout) {
 
     var obj = JSON.parse(text);
     $scope.jsonTbl = obj.employees;
+    //$scope.usersTable = new ngTableParams({
+    //    page: 1,
+    //    count: 10
+    //}, {
+    //    total: $scope.jsonTbl.length,
+    //    getData: function ($defer, params) {
+    //       // $scope.data = $scope.users.slice((params.page() - 1) * params.count(), params.page() * params.count());
+    //        $defer.resolve($scope.data);
+    //    }
+    //});
     
 
 
